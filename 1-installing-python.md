@@ -12,7 +12,7 @@ To make things more confusing, we often talk about having multiple Python *envir
 
 <!-- To make things even more complex, sometimes the packages (apps) we install are interdependent and mutually exclusive: a package we want for one task (e.g. satellite analysis) may, in the background critically [depend on](https://xkcd.com/2347/) a specific version of a numerical analysis package (e.g. `v.2.41`, as a useful function was introduced at that version). However, a package for another task (e.g. time-series analysis) may depend on another version. Our package managers are designed to *manage dependencies* and make sure that all the background required packages play nicely with all the packages you want. -->
 
-## Miniconda
+## Miniforge
 
 There are numerous ways to install Python and [things can get confusing](https://xkcd.com/1987/). To avoid confusion, I will recommend only one way, which is called 'Miniforge' and [can be installed by following the instructions at the following link](https://github.com/conda-forge/miniforge).
 
