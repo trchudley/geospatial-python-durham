@@ -234,7 +234,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/trchudley/geospatial-python-durham" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -251,7 +251,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/trchudley/geospatial-python-durham/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -404,11 +404,11 @@ document.write(`
 <section id="create-a-book-skeleton">
 <h2>2. Create a Book Skeleton<a class="headerlink" href="#create-a-book-skeleton" title="Link to this heading">#</a></h2>
 <p>In your repo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>create<span class="w"> </span>mybook/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>create<span class="w"> </span>website/
 </pre></div>
 </div>
 <p>This creates a sample book structure like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mybook</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">website</span><span class="o">/</span>
   <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
   <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>
   <span class="n">intro</span><span class="o">.</span><span class="n">md</span>
@@ -424,9 +424,9 @@ document.write(`
 <section id="add-your-files">
 <h2>3. Add Your Files<a class="headerlink" href="#add-your-files" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Copy your <code class="docutils literal notranslate"><span class="pre">.md</span></code> and <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files into the <code class="docutils literal notranslate"><span class="pre">mybook/</span></code> folder, or into a parallel folder:</p></li>
+<li><p>Copy your <code class="docutils literal notranslate"><span class="pre">.md</span></code> and <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files into the <code class="docutils literal notranslate"><span class="pre">website/</span></code> folder, or into a parallel folder:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> mybook/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> website/
     ├── _config.yml
     ├── _toc.yml
     ├── intro.md
@@ -434,35 +434,40 @@ document.write(`
     └── advanced-topics.md
 </pre></div>
 </div>
-<p>NB: These have to be within the <code class="docutils literal notranslate"><span class="pre">mybook/</span></code> directory: I succesfully got around this with symlinks (e.g. <code class="docutils literal notranslate"><span class="pre">../material/1-introducing-command-line.md</span> <span class="pre">1-introducing-command-line.md</span></code>)</p>
+<p>NB: These have to be within the <code class="docutils literal notranslate"><span class="pre">website/</span></code> directory: I succesfully got around this with symlinks (e.g. <code class="docutils literal notranslate"><span class="pre">../material/1-introducing-command-line.md</span> <span class="pre">1-introducing-command-line.md</span></code>)</p>
 <ul class="simple">
 <li><p>Update <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> to include them relative to this file, e.g.:</p></li>
 </ul>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jb-book</span>
-<span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../material/intro</span>
+<span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">intro</span>
 
 <span class="nt">chapters</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../material/getting-started</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../material/advanced-topics</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getting-started</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">advanced-topics</span>
 </pre></div>
 </div>
 </section>
 <section id="build-locally">
 <h2>4. Build Locally<a class="headerlink" href="#build-locally" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>mybook/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>website/
 </pre></div>
 </div>
 <p>You’ll get a static site in <code class="docutils literal notranslate"><span class="pre">_build/html/</span></code>.
 Open with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>open<span class="w"> </span>mybook/_build/html/index.html
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>open<span class="w"> </span>website/_build/html/index.html
 </pre></div>
 </div>
 </section>
 <section id="publish-to-github-pages">
 <h2>5. Publish to GitHub Pages<a class="headerlink" href="#publish-to-github-pages" title="Link to this heading">#</a></h2>
 <p>In your repo root:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>mybook/
-ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>mybook/_build/html
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>website/
+
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;commit notes&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+
+ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>website/_build/html
 </pre></div>
 </div>
 <ul class="simple">
