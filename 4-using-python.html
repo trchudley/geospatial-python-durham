@@ -1,0 +1,1265 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Python for Geospatial Science &#8212; Geospatial Programming at Durham</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4-using-python';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Version control: git and GitHub" href="5-using-github.html" />
+    <link rel="prev" title="3. Interacting with Python" href="3-interacting-with-python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="0-main-readme.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Geospatial Programming at Durham</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="0-main-readme.html">
+                    Geospatial programming with Python at Durham University
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1-introducing-command-line.html">1. Introducing the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-installing-python.html">2. Installing Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-interacting-with-python.html">3. Interacting with Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Python for Geospatial Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-using-github.html">5. Version control: <code class="docutils literal notranslate"><span class="pre">git</span></code> and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-using-hpc.html">6. Using the HPC</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F4-using-python.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/4-using-python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>4. Python for Geospatial Science</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-python">Basic Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-operations">Basic operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-data-structures-and-operations">Basic data structures and operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-for-data-analysis">Python for Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-packages-to-create-and-plot-data">Using Python packages to create and plot data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-tabular-files">Python packages to load tabular files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">Working with Files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-for-geospatial-analysis">Python for Geospatial Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-vector-geospatial-data">Python packages to load vector geospatial data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-n-dimensional-climate-data-e-g-netcdfs">Python packages to load n-dimensional climate data (e.g. netCDFs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-raster-data">Python packages to load raster data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-python">Advanced Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-modules-and-packages">Creating modules and packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-data-dynamic-stacs-and-the-microsoft-planetary-computer">Downloading data: dynamic STACs and the Microsoft Planetary Computer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-performance-multi-numba-and-dask">Improving performance: <code class="docutils literal notranslate"><span class="pre">multi</span></code>, <code class="docutils literal notranslate"><span class="pre">numba</span></code> and <code class="docutils literal notranslate"><span class="pre">dask</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-for-geospatial-science">
+<h1>4. Python for Geospatial Science<a class="headerlink" href="#python-for-geospatial-science" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Page in Production</strong></p>
+</div></blockquote>
+<p>The aim of this Jupyter Notebook, as with the rest of the document in this repository, is to give you a very brief whirlwind tour of how we might use Python to perform geospatial data analysis. It’s not going to be an extremely detailed introduction that will allow to start doing advanced science with no other support - but it will point you in right direction for doing a wide variety of geospatial tasks, identifying the most common/established methods that you can use as a springboard for googling/LLMing a solution.</p>
+<section id="basic-python">
+<h2>Basic Python<a class="headerlink" href="#basic-python" title="Link to this heading">#</a></h2>
+<p>This is very basic Python that you can find at any tutorial, so I will cover it extremely quickly. If you’re running this Notebook, and not just viewing it online, you will be able to edit and run the code blocks (“cells”) yourself by clicking the ‘play’ button, or by pressing <code class="docutils literal notranslate"><span class="pre">SHIFT+ENTER</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Click on this cell and press SHIFT + ENTER to run this code,</span>
+<span class="c1"># which outputs the text &#39;hello world&#39;.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world!
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can run code again and again. You can’t hurt anything - if you break it, you can reboot the notebook by clicking <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> in the tool bar, and <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">Kernel</span></code> and <code class="docutils literal notranslate"><span class="pre">Clear</span> <span class="pre">Output</span> <span class="pre">of</span> <span class="pre">All</span> <span class="pre">Cells</span></code>.</p>
+<section id="basic-operations">
+<h3>Basic operations<a class="headerlink" href="#basic-operations" title="Link to this heading">#</a></h3>
+<p>At the most basic level, we can use Python to do operations between the basic data types, which include numeric, string (text), and Boolean (<code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code>) data types.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># By the way, this text is called a &quot;comment&quot;. It&#39;s a message to other</span>
+<span class="c1"># humans. Starting a line with &quot;#&quot; tells the program not to read this</span>
+<span class="c1"># line. The program will go to the next line that doesn&#39;t start with &#39;#&#39;</span>
+
+<span class="mi">5</span> <span class="o">-</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">7</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># Two equal signs (&#39;==&#39;) evaluates whether the left</span>
+               <span class="c1"># side is equal to the right side, and returns True/False</span>
+               <span class="c1"># (a data type known as a &#39;boolean&#39; or &#39;bool&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can string together more complex ideas by ‘storing’ values as variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following lines define variables called &quot;a&quot; and &quot;b&quot;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># the next line shows us what a plus b is.</span>
+<span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom&#39;</span>  <span class="c1"># Now we&#39;re defining a &#39;string&#39; rather than a number!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, my name is &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, my name is Tom
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variables are remembered between cells:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span>  <span class="c1"># this line calculates a times a and saves the result as a varialbe called &quot;c&quot;</span>
+<span class="n">c</span>        <span class="c1"># this line tells the program to show us what &quot;c&quot; is.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, the cells need to be run in order for Python to work. In the first of the two cells below, we try and use a variable not_defined_yet before we define it. It will produce an error message. If you then run the second, where we define the variable, and then return to the first, it will work:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_defined_yet</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># Two asterisks raises the variable to a</span>
+                      <span class="c1"># power - here, we&#39;re calculating the square.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">not_defined_yet</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># Two asterisks raises the variable to a</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                       <span class="c1"># power - here, we&#39;re calculating the square.</span>
+
+<span class="ne">NameError</span>: name &#39;not_defined_yet&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_defined_yet</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="basic-data-structures-and-operations">
+<h3>Basic data structures and operations<a class="headerlink" href="#basic-data-structures-and-operations" title="Link to this heading">#</a></h3>
+<p>We can combine our data types into data structures. Lists and Tuples are both chains of multiple items, with some slight differences in the background that give them slightly different purposes (you can explore this yourself). Dictionaries are used to store items in key:value pairs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">my_dictionary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;framework&#39;</span><span class="p">:</span> <span class="s1">&#39;Jupyter&#39;</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, my name is &#39;</span> <span class="o">+</span> <span class="n">my_dictionary</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+Hello, my name is Tom
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that above I used a ‘for loop’ to iterate through my list - it will go through the list one at a time, applying the same commands to each of them.</p>
+<p>There are other ways we can interact with our data, such as <code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code> statements. <code class="docutils literal notranslate"><span class="pre">while</span></code> will continue looping through a set of commands until a condition is reached. <code class="docutils literal notranslate"><span class="pre">if</span></code> statements will only perform a certain task if a condition is met.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number three!&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+The number three!
+4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<p>We can begin to create more complex proceses using ‘functions’. We’ve already seen one function in this notebook - the print function above. However, it’s possible to define more functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function that will take a generic variable (&#39;x&#39;) and return an output (&#39;y&#39;)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply_by_two</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can use this function elsewhere in the Notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">multiply_by_two</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>The strength of Python’s open-source capabilities is that we don’t just need to rely on our own functions - instead, we’ll be using those made by others. We can import packages made by others, giving us access to new functions.</p>
+<p>A default package included within the Python standard library is math, which provides the sort of functions you might expect:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Now we have `math`, we can call its functions in the form math.name_of_function(input)</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>  <span class="c1"># Calculate the square root</span>
+
+<span class="n">e</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="python-for-data-analysis">
+<h2>Python for Data Analysis<a class="headerlink" href="#python-for-data-analysis" title="Link to this heading">#</a></h2>
+<section id="using-python-packages-to-create-and-plot-data">
+<h3>Using Python packages to create and plot data<a class="headerlink" href="#using-python-packages-to-create-and-plot-data" title="Link to this heading">#</a></h3>
+<p>Now that we understand the basics, we can begin to use the files we have installed. Although I only provided three packages to install (<code class="docutils literal notranslate"><span class="pre">rioxarray</span></code>, <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>), these included a number of key dependencies that we will be using. Perhaps the most foundational package for doing science in python is called <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. <code class="docutils literal notranslate"><span class="pre">numpy</span></code> provides you a more feature-compete range of maths capability than <code class="docutils literal notranslate"><span class="pre">math</span></code> alone. Most importantly, it uses its own data type, called a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array, which is the foundational data type of nearly everything else we will be doing.</p>
+<p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> can imported just like <code class="docutils literal notranslate"><span class="pre">math</span></code> - however, it is common to rename it to <code class="docutils literal notranslate"><span class="pre">np</span></code>, as we will be using it so much we want to save our keyboard!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Create a numpy array that ranges between 0 and 2pi, with 100 elements</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Show between the 10th and 20th element</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample x:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
+
+<span class="c1"># Calculate the sine of each element</span>
+<span class="n">sinx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Show between the 10th and 20th element</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample sin(x):&#39;</span><span class="p">,</span> <span class="n">sinx</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
+
+<span class="c1"># Calculate the cosine of each element</span>
+<span class="n">cosx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample x: [0.63466518 0.6981317  0.76159822 0.82506474 0.88853126 0.95199777
+ 1.01546429 1.07893081 1.14239733 1.20586385]
+Sample sin(x): [0.59290793 0.64278761 0.69007901 0.73459171 0.77614646 0.81457595
+ 0.84972543 0.88145336 0.909632   0.93414786]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, I am not going to go into detail here - hopefully you can interpret what is happening, and know where to go to find more examples!</p>
+<p>We can also plot this data. The go-to for producing data for general uses is called <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, the ‘matlab plotting library’ (because it originally aimed to emulate MATLAB plotting). Here is a quick example of the sort of thing you can do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sinx</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cosx</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Function Output&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sine and Cosine&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/199cf3110908778cbad71dbc6889987fb04655c448a1f04f8f29abc94a321289.png" src="_images/199cf3110908778cbad71dbc6889987fb04655c448a1f04f8f29abc94a321289.png" />
+</div>
+</div>
+<p>Note that numpy can produce n-dimensional data (1-D, 2-D, 3-D, <span class="math notranslate nohighlight">\(n\)</span>-d…). We can also plot it. Hopefully we can start to see how this might be useful for geospatial data…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Values&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;A random 2D image&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d2d057a59b880c3db8417104115007d9d9a7410a7160626e3772db15dfffb797.png" src="_images/d2d057a59b880c3db8417104115007d9d9a7410a7160626e3772db15dfffb797.png" />
+</div>
+</div>
+</section>
+<section id="python-packages-to-load-tabular-files">
+<h3>Python packages to load tabular files<a class="headerlink" href="#python-packages-to-load-tabular-files" title="Link to this heading">#</a></h3>
+<p>Okay, so we can generate random data and do some things to it. So what?</p>
+<p>To begin to load and manipulate actual data, we need another package - something that kind of works like Microsoft Excel, maybe? Our solution here is <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv&#39;</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we have read the <a class="reference external" href="https://gml.noaa.gov/ccgg/trends/data.html">Mauna Loa monthly mean CO2 record .csv file</a> using the handy <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function of pandas. Due to the awkard fact that this csv file has a load of comment lines (beginning with <code class="docutils literal notranslate"><span class="pre">#</span></code>) had to specify that to pandas, but this isn’t a normal thing to do - normally just feeding the filepath of a csv (be it local or online) is enough to make things work!</p>
+<p>We have called our variable <code class="docutils literal notranslate"><span class="pre">df</span></code>, standing for ‘dataframe’, which is what pandas calls its data type. We can see what it looks like by just called <code class="docutils literal notranslate"><span class="pre">df</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>decimal date</th>
+      <th>average</th>
+      <th>deseasonalized</th>
+      <th>ndays</th>
+      <th>sdev</th>
+      <th>unc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1958</td>
+      <td>3</td>
+      <td>1958.2027</td>
+      <td>315.71</td>
+      <td>314.44</td>
+      <td>-1</td>
+      <td>-9.99</td>
+      <td>-0.99</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1958</td>
+      <td>4</td>
+      <td>1958.2877</td>
+      <td>317.45</td>
+      <td>315.16</td>
+      <td>-1</td>
+      <td>-9.99</td>
+      <td>-0.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1958</td>
+      <td>5</td>
+      <td>1958.3699</td>
+      <td>317.51</td>
+      <td>314.69</td>
+      <td>-1</td>
+      <td>-9.99</td>
+      <td>-0.99</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1958</td>
+      <td>6</td>
+      <td>1958.4548</td>
+      <td>317.27</td>
+      <td>315.15</td>
+      <td>-1</td>
+      <td>-9.99</td>
+      <td>-0.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1958</td>
+      <td>7</td>
+      <td>1958.5370</td>
+      <td>315.87</td>
+      <td>315.20</td>
+      <td>-1</td>
+      <td>-9.99</td>
+      <td>-0.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>805</th>
+      <td>2025</td>
+      <td>4</td>
+      <td>2025.2917</td>
+      <td>429.64</td>
+      <td>427.13</td>
+      <td>23</td>
+      <td>0.73</td>
+      <td>0.29</td>
+    </tr>
+    <tr>
+      <th>806</th>
+      <td>2025</td>
+      <td>5</td>
+      <td>2025.3750</td>
+      <td>430.51</td>
+      <td>427.26</td>
+      <td>23</td>
+      <td>0.39</td>
+      <td>0.16</td>
+    </tr>
+    <tr>
+      <th>807</th>
+      <td>2025</td>
+      <td>6</td>
+      <td>2025.4583</td>
+      <td>429.61</td>
+      <td>427.16</td>
+      <td>26</td>
+      <td>0.71</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>808</th>
+      <td>2025</td>
+      <td>7</td>
+      <td>2025.5417</td>
+      <td>427.87</td>
+      <td>427.45</td>
+      <td>24</td>
+      <td>0.31</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <th>809</th>
+      <td>2025</td>
+      <td>8</td>
+      <td>2025.6250</td>
+      <td>425.48</td>
+      <td>427.36</td>
+      <td>24</td>
+      <td>0.36</td>
+      <td>0.14</td>
+    </tr>
+  </tbody>
+</table>
+<p>810 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>Looks neat. Now we can also plot this data! We can call individual columns in a way similar to dictionaries - e.g. <code class="docutils literal notranslate"><span class="pre">df['average']</span></code> to get the ‘average’ column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;decimal date&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Average CO2&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;CO2 (ppm)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Monthly Average CO2 at Mauna Loa&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d70103a0a533bc51c3873be9d55819109327c94f585e373bef7c6447f8b7f13b.png" src="_images/d70103a0a533bc51c3873be9d55819109327c94f585e373bef7c6447f8b7f13b.png" />
+</div>
+</div>
+<p>We can also do additional things with our data for processing. We could do this using maths functions (including numpy etc) to create new columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert average ppm to average ppb</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_ppb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or we can take advantage of pandas functinality to do more advanced stuff based around the context of the columns (e.g. annual averages, smoothing). Pandas is quite good at time-series stuff in particular - it was originally designed for economic trend analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a &#39;datetime&#39; column from the year and month columns</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Day</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Calculate a rolling 12-month mean, centred on the current month</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_smoothed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note one thing we do here is turn our <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">month</span></code> columns, which are currently just <code class="docutils literal notranslate"><span class="pre">int</span></code> (integer) data, into a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> datatype using the <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> function. <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects can be a little finnicky in Python, but Pandas makes it somewhat easy to manage this kind of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Monthly Average&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_smoothed&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rolling Annual Mean&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;CO2 (ppm)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CO2 at Mauna Loa&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3a731e697ef163abad3f83a93e8bee9c0dc1835a7c33a9dca05db5447f7cf222.png" src="_images/3a731e697ef163abad3f83a93e8bee9c0dc1835a7c33a9dca05db5447f7cf222.png" />
+</div>
+</div>
+</section>
+<section id="working-with-files">
+<h3>Working with Files<a class="headerlink" href="#working-with-files" title="Link to this heading">#</a></h3>
+<p>Once you have generated your data, we can re-export it to a file, so that we can use it in other scripts.</p>
+<p>Nearly all tools today will have their own simple way of exporting data. For pandas dataframes, it is as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../sample_data/mauna_loa_co2.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, it’s worth highlighting a few further tools, specifically, <code class="docutils literal notranslate"><span class="pre">os</span></code>, for interacting with basic command line interfact, and <code class="docutils literal notranslate"><span class="pre">glob</span></code> for searching for files.</p>
+<p>In the below cell, I do a few things using only <code class="docutils literal notranslate"><span class="pre">os</span></code> and tools you have seen so far. I first check to see if a directory called <code class="docutils literal notranslate"><span class="pre">sample_input</span></code> exists in the directory <code class="docutils literal notranslate"><span class="pre">sample_data</span></code>. If it doesn’t exist (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">os.path.exists(dir_path)</span></code>), I create it (<code class="docutils literal notranslate"><span class="pre">os.mkdir(dir_path</span></code>)). I then loop through a range of years 2020-2025, generating a pandas dataframe that contains two columns: the first all the dates in the year, and the second a series of random values (using <code class="docutils literal notranslate"><span class="pre">numpy</span></code>).</p>
+<p>This is necessary just to generate what I want to show you next, but it’s worth showing just how simple it is! If you go to the <code class="docutils literal notranslate"><span class="pre">./sample_data/sample_input</span></code> directory in this repository, you can see that they have been created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Define directory path</span>
+<span class="n">dir_path</span> <span class="o">=</span> <span class="s2">&quot;../sample_data/sample_input&quot;</span>
+
+<span class="c1"># Create directory if it doesn&#39;t exist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
+
+    <span class="c1"># Make directory</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+
+    <span class="c1"># Generate random data for CSV files 2020-2025</span>
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2026</span><span class="p">):</span>
+        <span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-12-31&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)[:</span><span class="mi">365</span><span class="p">]</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1"># random values</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">dates</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="n">values</span><span class="p">})</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;data_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anyway, the important thing is to imagine not that we have just created this data, but that we have a directory full of tens or hundreds of iteratively named data files (kind of like what we have with our <code class="docutils literal notranslate"><span class="pre">data_2020.csv</span></code> through <code class="docutils literal notranslate"><span class="pre">data_2025.csv</span></code> files). How can we begin to interact with these programatically?</p>
+<p>One key was is using the <code class="docutils literal notranslate"><span class="pre">glob</span></code> standard library. <code class="docutils literal notranslate"><span class="pre">glob</span></code> allows us to search our file system for standardise file names using pattern matching. Below, we construct a <code class="docutils literal notranslate"><span class="pre">glob</span></code> search for files in the format <code class="docutils literal notranslate"><span class="pre">&quot;./sample_data/sample_input/data_*.csv&quot;</span></code>, where <code class="docutils literal notranslate"><span class="pre">*</span></code> just means “fill in the blanks”. It returns a list of files that match, which we print. See that we get a list of all the matching files in the folder!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+
+<span class="c1"># Find all csv files</span>
+<span class="n">csv_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;../sample_data/sample_input/data_*.csv&quot;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">csv_files</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./sample_data/sample_input/data_2021.csv
+./sample_data/sample_input/data_2020.csv
+./sample_data/sample_input/data_2022.csv
+./sample_data/sample_input/data_2023.csv
+./sample_data/sample_input/data_2024.csv
+./sample_data/sample_input/data_2025.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we have the ability to use our existing tools - such as looping and functions - to open these data sequentially and do interesting things with them. For now, we will just plot these on the same plot. However, imagine you had 1000 files that needed some slightly more complex processing applied. You could (with the help of internet searching and LLMs) loop through all 1000 files, apply the processing to each one, and export them under new standard naems to a new location. Hopefully this begins to show just how powerful programming can be…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">csv_files</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Scatter plot of all CSV files&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Values&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/76763023822b0cb63e34c9ddadf0e89127b8d9af31fe91595d4049a830c3655f.png" src="_images/76763023822b0cb63e34c9ddadf0e89127b8d9af31fe91595d4049a830c3655f.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="python-for-geospatial-analysis">
+<h2>Python for Geospatial Analysis<a class="headerlink" href="#python-for-geospatial-analysis" title="Link to this heading">#</a></h2>
+<section id="python-packages-to-load-vector-geospatial-data">
+<h3>Python packages to load vector geospatial data<a class="headerlink" href="#python-packages-to-load-vector-geospatial-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="python-packages-to-load-n-dimensional-climate-data-e-g-netcdfs">
+<h3>Python packages to load n-dimensional climate data (e.g. netCDFs)<a class="headerlink" href="#python-packages-to-load-n-dimensional-climate-data-e-g-netcdfs" title="Link to this heading">#</a></h3>
+</section>
+<section id="python-packages-to-load-raster-data">
+<h3>Python packages to load raster data<a class="headerlink" href="#python-packages-to-load-raster-data" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="advanced-python">
+<h2>Advanced Python<a class="headerlink" href="#advanced-python" title="Link to this heading">#</a></h2>
+<section id="creating-modules-and-packages">
+<h3>Creating modules and packages<a class="headerlink" href="#creating-modules-and-packages" title="Link to this heading">#</a></h3>
+</section>
+<section id="downloading-data-dynamic-stacs-and-the-microsoft-planetary-computer">
+<h3>Downloading data: dynamic STACs and the Microsoft Planetary Computer<a class="headerlink" href="#downloading-data-dynamic-stacs-and-the-microsoft-planetary-computer" title="Link to this heading">#</a></h3>
+</section>
+<section id="improving-performance-multi-numba-and-dask">
+<h3>Improving performance: <code class="docutils literal notranslate"><span class="pre">multi</span></code>, <code class="docutils literal notranslate"><span class="pre">numba</span></code> and <code class="docutils literal notranslate"><span class="pre">dask</span></code><a class="headerlink" href="#improving-performance-multi-numba-and-dask" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3-interacting-with-python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3. Interacting with Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5-using-github.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5. Version control: <code class="docutils literal notranslate"><span class="pre">git</span></code> and GitHub</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-python">Basic Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-operations">Basic operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-data-structures-and-operations">Basic data structures and operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-for-data-analysis">Python for Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-packages-to-create-and-plot-data">Using Python packages to create and plot data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-tabular-files">Python packages to load tabular files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">Working with Files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-for-geospatial-analysis">Python for Geospatial Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-vector-geospatial-data">Python packages to load vector geospatial data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-n-dimensional-climate-data-e-g-netcdfs">Python packages to load n-dimensional climate data (e.g. netCDFs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-to-load-raster-data">Python packages to load raster data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-python">Advanced Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-modules-and-packages">Creating modules and packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-data-dynamic-stacs-and-the-microsoft-planetary-computer">Downloading data: dynamic STACs and the Microsoft Planetary Computer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-performance-multi-numba-and-dask">Improving performance: <code class="docutils literal notranslate"><span class="pre">multi</span></code>, <code class="docutils literal notranslate"><span class="pre">numba</span></code> and <code class="docutils literal notranslate"><span class="pre">dask</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Chudley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
