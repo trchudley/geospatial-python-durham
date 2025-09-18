@@ -1,0 +1,12 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: ../README
+chapters:
+ - file: ../material/1-introducing-command-line
+ - file: ../material/2-installing-python
+ - file: ../material/3-interacting-with-python
+ - file: ../material/4-using-python
+ - file: ../material/5-using-github
+ - file: ../material/6-using-hpc
