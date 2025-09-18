@@ -2,11 +2,11 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: ../README
+root: 0-main-readme
 chapters:
- - file: ../material/1-introducing-command-line
- - file: ../material/2-installing-python
- - file: ../material/3-interacting-with-python
- - file: ../material/4-using-python
- - file: ../material/5-using-github
- - file: ../material/6-using-hpc
+ - file: 1-introducing-command-line
+ - file: 2-installing-python
+ - file: 3-interacting-with-python
+ - file: 4-using-python
+ - file: 5-using-github
+ - file: 6-using-hpc

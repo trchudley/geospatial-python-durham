@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Introducing the command line &#8212; Geospatial Programming at Durham</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1-introducing-command-line';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Installing Python" href="2-installing-python.html" />
+    <link rel="prev" title="Geospatial programming with Python at Durham University" href="0-main-readme.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="0-main-readme.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Geospatial Programming at Durham</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="0-main-readme.html">
+                    Geospatial programming with Python at Durham University
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introducing the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-installing-python.html">2. Installing Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-interacting-with-python.html">3. Interacting with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-using-python.html">4. Python for Geospatial Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-using-github.html">5. Version control: <code class="docutils literal notranslate"><span class="pre">git</span></code> and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-using-hpc.html">6. Using the HPC</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1-introducing-command-line.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1-introducing-command-line.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Introducing the command line</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-the-command-line">Opening the command line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-and-macos">Linux and MacOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-interactions">Basic Interactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating">Navigating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-introductory-commands">Some introductory commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slightly-more-advanced-commands">Slightly more advanced commands</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-scripts-sh-files">Shell scripts (<code class="docutils literal notranslate"><span class="pre">.sh</span></code> files)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-commands-rc-file">Run commands (<code class="docutils literal notranslate"><span class="pre">rc</span></code> file)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introducing-the-command-line">
+<h1>1. Introducing the command line<a class="headerlink" href="#introducing-the-command-line" title="Link to this heading">#</a></h1>
+<p>Interecting with programmatic data requires a basic understanding of how to use a command line interface (CLI) - i.e. interacting with our computer using text-based commands.</p>
+<p>We do this through a program known as a ‘terminal’, which runs a software known as a ‘shell’ - common shells include <code class="docutils literal notranslate"><span class="pre">bash</span></code> and <code class="docutils literal notranslate"><span class="pre">zsh</span></code>. You can probably ignore such details here: for our purposes, phrases such as ‘terminal’, ‘shell’, and ‘console’ are basically synonymous.</p>
+<p>It may be the case that you don’t end up interacting with the terminal much at all, so don’t be put off by the fact that we have to start this journey in possibly the most low-level technical part. However, if you progress to a more advanced level, this will become essential knowledge!</p>
+<section id="opening-the-command-line">
+<h2>Opening the command line<a class="headerlink" href="#opening-the-command-line" title="Link to this heading">#</a></h2>
+<section id="linux-and-macos">
+<h3>Linux and MacOS<a class="headerlink" href="#linux-and-macos" title="Link to this heading">#</a></h3>
+<p>Linux and MacOS are closely related operating systems, part of a family known as ‘Unix’ (or Unix-like) operating systems. Even though Windows is the most popular consumer OS, Unix operating systems form the basis of most computer infrastructure, and are the basis for scientific computing.</p>
+<p>On MacOS and most Linux distributions, you can access the command line through an application called ‘Terminal’. On some Linux distributions, it may also be called ‘Konsole’ or ‘gnome-terminal’ (although if you are using those distributions you probably don’t need this guide).</p>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
+<p>Windows is not a Unix-like OS, and as such has its own set of terminals for interacting with the Windows OS - most commonly ‘Command Prompt’ (<code class="docutils literal notranslate"><span class="pre">cmd</span></code>) or ‘PowerShell’. However, this is a distinct software with its own CLI language and tools. For scientific computing, Windows now has official capability to install a Linux subsystem called Windows Subsystem for Linux (WSL). The will enable to you interact with a command-line interface in the same way as described in this repo and most scientific computing guides.</p>
+<p>WSL can come preinstalled on some setups, but if not, information on installing WSL <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">can be found on the official Microsoft website</a>. I am not a Windows user, so cannot offer any specific advice, but if you end up installing it let me know if there’s anything worth adding to this guide.</p>
+</section>
+</section>
+<section id="basic-interactions">
+<h2>Basic Interactions<a class="headerlink" href="#basic-interactions" title="Link to this heading">#</a></h2>
+<section id="navigating">
+<h3>Navigating<a class="headerlink" href="#navigating" title="Link to this heading">#</a></h3>
+<p>When you have opened your terminal, you will see some generic opening statements followed by the command line:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>The individual details might vary according to the system and shell your are using. Here, <code class="docutils literal notranslate"><span class="pre">tom</span></code> is my login, <code class="docutils literal notranslate"><span class="pre">~</span></code> is my current directory, and <code class="docutils literal notranslate"><span class="pre">%</span></code> is the symbol which indicates you can begin typing commands! (this could be <code class="docutils literal notranslate"><span class="pre">$</span></code> if you are using <code class="docutils literal notranslate"><span class="pre">bash</span></code> rather than <code class="docutils literal notranslate"><span class="pre">zsh</span></code>).</p>
+<p>The first thing you might want to find out where you are. You can do this by typing in the command <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (which stands for ‘print working directory’), and pressing return:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span><span class="nb">pwd</span>
+/Users/tom
+</pre></div>
+</div>
+<p>So, we’re in the directory <code class="docutils literal notranslate"><span class="pre">/Users/tom</span></code> (think of this as having the same directory open in your GUI file manager). This specific directory is known as the ‘home directory’ - this is often represented in shorthand as ‘<code class="docutils literal notranslate"><span class="pre">~</span></code>’, which is why it appears as such on our command line.</p>
+<p>We can see what is in our directory by using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list files) command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>ls
+Applications<span class="w">			</span>bin
+Desktop<span class="w">					</span>Movies
+Documents<span class="w">				</span>Music
+Downloads<span class="w">				</span>OneDrive<span class="w"> </span>-<span class="w"> </span>Durham<span class="w"> </span>University
+Google<span class="w"> </span>Drive<span class="w">			</span>Pictures
+</pre></div>
+</div>
+<p>Looks about right for my home directory. We can change directories by using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory) command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Documents
+tom<span class="w"> </span>Documents<span class="w"> </span>%<span class="w"> </span><span class="nb">pwd</span>
+/Users/tom/Documents
+</pre></div>
+</div>
+<p>Note that after I changed directories, my command line began showing I was in the <code class="docutils literal notranslate"><span class="pre">Documents</span></code> directory, indicating we succesfully moved. One confusing factor here is that, by typing <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Documents</span></code>, we only searched for directories called <code class="docutils literal notranslate"><span class="pre">Documents</span></code> within the working directory. Now, our working directory has changed, so if I try and change to e.g. <code class="docutils literal notranslate"><span class="pre">Desktop</span></code>, I will get an error:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tom<span class="w"> </span>Documents<span class="w"> </span>%<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Desktop
+cd:<span class="w"> </span>no<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory:<span class="w"> </span>Desktop
+</pre></div>
+</div>
+<p>This is because there is no directory called <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> in the <code class="docutils literal notranslate"><span class="pre">Documents</span></code> directory (i.e. no filepath <code class="docutils literal notranslate"><span class="pre">/Users/tom/Documents/Desktop</span></code>). So how do we get to the <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> directory from here?</p>
+<p>One option would be to provide the full filepath:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tom<span class="w"> </span>Documents<span class="w"> </span>%<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/Users/tom/Desktop
+</pre></div>
+</div>
+<p>Another option would be to return to the home directory, and then move to the Desktop from there. We can do this by providing the full filepath (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/Users/tom</span></code>), or by using the <code class="docutils literal notranslate"><span class="pre">~</span></code> shortcut (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code>). As we are also in a directory ‘beneath’ the main one, we can also use the <code class="docutils literal notranslate"><span class="pre">..</span></code> shortcut, which says ‘go to the directory above this’ (e.g. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>). We could also chain this with the <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> destination to go there directly (e.g. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../Desktop</span></code> or <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Desktop</span></code>).</p>
+</section>
+<section id="some-introductory-commands">
+<h3>Some introductory commands<a class="headerlink" href="#some-introductory-commands" title="Link to this heading">#</a></h3>
+<p>Now that we’re comfortable moving around, here are some other common beginner commands:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span></code>:</strong> Makes a directory. e.g. <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">new_directory</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">echo</span></code>:</strong> Prints text to the terminal window. e.g. <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">hello</span> <span class="pre">world</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">touch</span></code>:</strong> Creates a new empty file. e.g. <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">new_file.txt</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">mv</span></code>:</strong> Move or rename a directroy. e.g. <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">new_directory</span> <span class="pre">~/newlocation/new_name_of_directory</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">rm</span></code>:</strong> Delete a file or directory. e.g. <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">~/newlocation/new_name_of_directory</span></code>.</p></li>
+</ul>
+</section>
+<section id="slightly-more-advanced-commands">
+<h3>Slightly more advanced commands<a class="headerlink" href="#slightly-more-advanced-commands" title="Link to this heading">#</a></h3>
+<p>Most commands have a series of options you can activate via ‘flags’. <code class="docutils literal notranslate"><span class="pre">rm</span></code> is a useful example. For instance, <code class="docutils literal notranslate"><span class="pre">-i</span></code> activates ‘interactive mode’, where you are promped for confirmation, which is very useful for such a powerful command that can cause damage by deleting files. <code class="docutils literal notranslate"><span class="pre">-r</span></code> deletes ‘recursively’, deleting all sub-directories and files. This is a <strong>very dangerous</strong> command. The conmmand <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">my_directory</span></code> will blast away absolutely everything within <code class="docutils literal notranslate"><span class="pre">my_directory</span></code>. A slip of a finger could delete everything within your home directory or hard drive!</p>
+<p>Another useful thing to know is the use of <code class="docutils literal notranslate"><span class="pre">*</span></code> as a wildcard. It tells the shell to find any and all characters. For instance, <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.txt</span></code> would list all <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files in the current directory, <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">report_*</span></code> would delete all files beginning with <code class="docutils literal notranslate"><span class="pre">report_</span></code>, and <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">*.jpg</span> <span class="pre">~/pictures</span></code> would copy all <code class="docutils literal notranslate"><span class="pre">jpeg</span></code> files in the current working directory to <code class="docutils literal notranslate"><span class="pre">~/pictures</span></code>.</p>
+<p>Some more advance commands that I use a fair amount include the following. I will not explain how to use them, but leave you to google if they are useful (or use the <code class="docutils literal notranslate"><span class="pre">man</span></code> command, which gives you a printed ‘manual’ of any command!):</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">curl</span></code> or <code class="docutils literal notranslate"><span class="pre">wget</span></code> (depending on OS):</strong> download files found at given URLs.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">grep</span></code>:</strong> Search for fragments of text within larger bodies.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">wc</span></code>:</strong> Counts the number or words, lines, characters, etc. in a file or output.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">|</span></code> (pipe):</strong> links commands together. For instance, <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">|</span> <span class="pre">wc</span> <span class="pre">-l</span></code> ‘pipes’ the output of <code class="docutils literal notranslate"><span class="pre">ls</span></code> into <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code>, counting the number of lines in the <code class="docutils literal notranslate"><span class="pre">ls</span></code> output. As <code class="docutils literal notranslate"><span class="pre">ls</span></code> prints out one directory per line, this gives us a count of the number of files and directories in your working directory.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (right angle bracket):</strong> Output the results into whatever is specified (usually a file) - e.g. <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&gt;</span> <span class="pre">my_directories.txt</span></code></p></li>
+</ul>
+<p>It is also possible to view and edit documents and files within the command line using commands such as <code class="docutils literal notranslate"><span class="pre">vim</span></code> - I will highlight that it is possible here, but it tends to be preferable for advanced powerusers. I prefer to edit my code using GUI software (specifically, VS Code), and will recommend that in a later section.</p>
+<p>There’s plenty more, but I will leave you to explore online material for help.</p>
+</section>
+</section>
+<section id="shell-scripts-sh-files">
+<h2>Shell scripts (<code class="docutils literal notranslate"><span class="pre">.sh</span></code> files)<a class="headerlink" href="#shell-scripts-sh-files" title="Link to this heading">#</a></h2>
+<p>A shell script is a file that contains a series of commands for Unix-style command-line interpreter to execute. We can use these to automate repetitive tasks. For instance, we could produce our own file to list files in our home directory:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># counthome.sh</span>
+
+<span class="c1"># `ls -1` lists each file on a new line, and `wc -l` counts the lines.</span>
+<span class="nv">count</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>-1<span class="w"> </span>~<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+
+<span class="c1"># Print the result to the terminal.</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="nv">$count</span><span class="s2"> files in your home directory.&quot;</span>
+</pre></div>
+</div>
+<p>Note a couple new techniques here: <code class="docutils literal notranslate"><span class="pre">#</span></code>, which indicites a ‘comment’ (the computer will ignore these lines when running, allowing us to make notes for ourself), and setting a variable (<code class="docutils literal notranslate"><span class="pre">count=</span></code>), which allows us to call is later by specifying <code class="docutils literal notranslate"><span class="pre">$count</span></code>.</p>
+<p>Now, we run the file by entering <code class="docutils literal notranslate"><span class="pre">./counthome.sh</span></code> - note that <code class="docutils literal notranslate"><span class="pre">./</span></code> is necessary, indicating ‘the file within the current directory. If we do so, we will get just the <code class="docutils literal notranslate"><span class="pre">echo</span></code> statement printed to the terminal.</p>
+<p>This is a simple and relatively useless example, but later (when learning about running code  on the HPC) we will make use of more practical <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts.</p>
+</section>
+<section id="run-commands-rc-file">
+<h2>Run commands (<code class="docutils literal notranslate"><span class="pre">rc</span></code> file)<a class="headerlink" href="#run-commands-rc-file" title="Link to this heading">#</a></h2>
+<p>Every time you start a new shell, it will ‘forget’ all the instructions, variables, and commands you gave it in the previous session. As you develop in using the command line, there may be an number of commands and instructions you want to have at your fingertips.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">rc</span></code> files (e.g. <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">/.zshrc</span></code>, depending on your shell) is effectively a shell script that is run every time the terminal is started. This allows you to set up your environment and preferences every time you start. You can create an empty file and edit it in a text editor (e.g. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">.bashrc</span></code>). The <code class="docutils literal notranslate"><span class="pre">.</span></code> preprended to the file name indicates that this is a ‘hidden file’ that is not shown by default in e.g. file managers, or using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+<p>A useful example of a use of an <code class="docutils literal notranslate"><span class="pre">rc</span></code> is managing your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. The <code class="docutils literal notranslate"><span class="pre">PATH</span></code> is a list of directories where the shell looks for commands (this includes commands such as <code class="docutils literal notranslate"><span class="pre">cd</span></code> and <code class="docutils literal notranslate"><span class="pre">ls</span></code> that you are already using!). As you create your own scripts and commands, it would be useful to them from anywhere without indicating the full filepath (e.g. <code class="docutils literal notranslate"><span class="pre">~/foo/bar/usefultool</span></code>). As a result, people often put these scripts into a directory called <code class="docutils literal notranslate"><span class="pre">bin</span></code> in an accessible location (e.g. <code class="docutils literal notranslate"><span class="pre">~/bin/usefultool</span></code>). This file can in practice be called anything you like - it is just convention that it is called <code class="docutils literal notranslate"><span class="pre">bin</span></code>, as this communicates the function clearly when other people begin exploring your directories. We can add the directory to the path using the command <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=$PATH:~/bin</span></code>. However, we would have to do this every time we open a new session. Instead, by creating an <code class="docutils literal notranslate"><span class="pre">rc</span></code> file and including the line <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=$PATH:~/bin</span></code>, this adds the <code class="docutils literal notranslate"><span class="pre">~/bin</span></code> directory to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> automatically the the beginning of every session. Now, your terminal will search when seeking a command to be executed, and your <code class="docutils literal notranslate"><span class="pre">usefultool</span></code> will work anywhere!</p>
+<p>Another example of a useful way of using the <code class="docutils literal notranslate"><span class="pre">rc</span></code> file is using aliases. Say you have a long command you use quite often - for instance, changing directories to one with along filepath (e.g. ). We can use the <code class="docutils literal notranslate"><span class="pre">alias</span></code> tool to save our fingers by creating a shortcut command. Running the command <code class="docutils literal notranslate"><span class="pre">alias</span> <span class="pre">gotodir=&quot;cd</span> <span class="pre">~/my/very/long/directory/path&quot;</span></code> means that every time you run <code class="docutils literal notranslate"><span class="pre">gotodir</span></code>, it will instead run the longer command in the background. Once again, the shell will ‘forget’ theses aliases when it is closed, so you will want to add alias commands to your <code class="docutils literal notranslate"><span class="pre">rc</span></code> file.</p>
+<p>Later in this material, various parts of the Python installation will add their own lines to your <code class="docutils literal notranslate"><span class="pre">rc</span></code> file. Don’t be surprised if things start appearing that you haven’t added! It is always best to understand where things have come from and what they do, however, because often lines can be added that are mutually exclusive or break if executed in the wrong order.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0-main-readme.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Geospatial programming with Python at Durham University</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2-installing-python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2. Installing Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-the-command-line">Opening the command line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-and-macos">Linux and MacOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-interactions">Basic Interactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating">Navigating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-introductory-commands">Some introductory commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slightly-more-advanced-commands">Slightly more advanced commands</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-scripts-sh-files">Shell scripts (<code class="docutils literal notranslate"><span class="pre">.sh</span></code> files)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-commands-rc-file">Run commands (<code class="docutils literal notranslate"><span class="pre">rc</span></code> file)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Chudley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
