@@ -15,13 +15,13 @@ pip install -U jupyter-book
 In your repo:
 
 ```bash
-jupyter-book create mybook/
+jupyter-book create website/
 ```
 
 This creates a sample book structure like:
 
 ```
-mybook/
+website/
   _config.yml
   _toc.yml
   intro.md
@@ -34,10 +34,10 @@ mybook/
 
 ## 3. Add Your Files
 
-* Copy your `.md` and `.ipynb` files into the `mybook/` folder, or into a parallel folder:
+* Copy your `.md` and `.ipynb` files into the `website/` folder, or into a parallel folder:
 
 ```
- mybook/
+ website/
     ├── _config.yml
     ├── _toc.yml
     ├── intro.md
@@ -45,30 +45,30 @@ mybook/
     └── advanced-topics.md
 ```
 
-NB: These have to be within the `mybook/` directory: I succesfully got around this with symlinks (e.g. `../material/1-introducing-command-line.md 1-introducing-command-line.md`)
+NB: These have to be within the `website/` directory: I succesfully got around this with symlinks (e.g. `../material/1-introducing-command-line.md 1-introducing-command-line.md`)
 
 * Update `_toc.yml` to include them relative to this file, e.g.:
 
 ```yaml
 format: jb-book
-root: ../material/intro
+root: intro
 
 chapters:
-- file: ../material/getting-started
-- file: ../material/advanced-topics
+- file: getting-started
+- file: advanced-topics
 ```
 
 ## 4. Build Locally
 
 ```bash
-jupyter-book build mybook/
+jupyter-book build website/
 ```
 
 You’ll get a static site in `_build/html/`.
 Open with:
 
 ```bash
-open mybook/_build/html/index.html
+open website/_build/html/index.html
 ```
 
 ## 5. Publish to GitHub Pages
@@ -76,8 +76,13 @@ open mybook/_build/html/index.html
 In your repo root:
 
 ```bash
-jupyter-book build mybook/
-ghp-import -n -p -f mybook/_build/html
+jupyter-book build website/
+
+git add .
+git commit -a -m "commit notes"
+git push -u origin main
+
+ghp-import -n -p -f website/_build/html
 ```
 
 * Requires [`ghp-import`](https://github.com/c-w/ghp-import) (`pip install ghp-import`).
