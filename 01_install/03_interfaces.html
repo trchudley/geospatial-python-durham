@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Interfacing with Python &#8212; Geospatial Python at Durham</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_install/03_interfaces';</script>
+    <link rel="icon" href="../_static/dugg_favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Basic Python" href="../02_using/01_basic_python.html" />
+    <link rel="prev" title="2. Installing Python" href="02_installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dugg_logo.png" class="logo__image only-light" alt="Geospatial Python at Durham - Home"/>
+    <script>document.write(`<img src="../_static/dugg_logo.png" class="logo__image only-dark" alt="Geospatial Python at Durham - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installing Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_command_line.html">1. Introducing the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_installation.html">2. Installing Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Interfacing with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_using/01_basic_python.html">4. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_using/02_data_analysis.html">5. Python for Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_using/03_geospatial_analysis.html">6. Geospatial Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using Cryosphere Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/01_satellite.html">7. Satellite Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/02_ice_velocity.html">8. Ice Velocity Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/03_elevation.html">9. Elevation Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/04_altimetry.html">10. Altimetry Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/01_github.html">11. Version control: <code class="docutils literal notranslate"><span class="pre">git</span></code> and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/02_hpc.html">12. Using the HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/03_packages.html">13. Creating Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/04_performance.html">14. Improving Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/05_deep_learning.html">15. Deep Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/trchudley/geospatial-python-durham" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/trchudley/geospatial-python-durham/issues/new?title=Issue%20on%20page%20%2F01_install/03_interfaces.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_install/03_interfaces.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Interfacing with Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">3.1. Command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-editors-and-integrated-development-environments-ides">3.2. Text Editors and Integrated Development Environments (IDEs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-editor-visual-studio-code">3.2.1. The ‘best’ editor – Visual Studio Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks">3.3. Jupyter Notebooks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="interfacing-with-python">
+<h1><span class="section-number">3. </span>Interfacing with Python<a class="headerlink" href="#interfacing-with-python" title="Link to this heading">#</a></h1>
+<section id="command-line">
+<h2><span class="section-number">3.1. </span>Command line<a class="headerlink" href="#command-line" title="Link to this heading">#</a></h2>
+<p>After activating your environment, you can activate the Python interpreter simply by entering <code class="docutils literal notranslate"><span class="pre">python</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>geospatial
+<span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>python
+Python<span class="w"> </span><span class="m">3</span>.12.10<span class="w"> </span><span class="p">|</span><span class="w"> </span>packaged<span class="w"> </span>by<span class="w"> </span>conda-forge<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">(</span>main,<span class="w"> </span>Apr<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">2025</span>,<span class="w"> </span><span class="m">22</span>:19:24<span class="o">)</span><span class="w"> </span><span class="o">[</span>Clang<span class="w"> </span><span class="m">18</span>.1.8<span class="w"> </span><span class="o">]</span><span class="w"> </span>on<span class="w"> </span>darwin
+Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>numpy<span class="w"> </span>as<span class="w"> </span>np
+&gt;&gt;&gt;<span class="w"> </span>np.sqrt<span class="o">(</span><span class="m">16</span><span class="o">)</span>
+np.float64<span class="o">(</span><span class="m">4</span>.0<span class="o">)</span>
+&gt;&gt;&gt;<span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom&#39;</span>
+&gt;&gt;&gt;<span class="w"> </span><span class="nv">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>f<span class="s1">&#39;My name is {name}&#39;</span>
+&gt;&gt;&gt;<span class="w"> </span>print<span class="o">(</span>statement<span class="o">)</span>
+My<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>Tom
+</pre></div>
+</div>
+<p>This is fine for exploring what Python can do, and you should use it when explore basic data types etc. However, it’s hard to write multi-line commands (e.g. functions), or save scripts for repeat use. As a result, we tend to gravitate towards two other options.</p>
+<ol class="arabic simple">
+<li><p>The first is to write <code class="docutils literal notranslate"><span class="pre">.py</span></code> files, which are simply text files of Python commands that will be run one-by-one. These can be run through the Python interpreter (e.g. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">myscript.py</span></code>). This is useful for writing e.g. longer processing scripts that will be run autonomously to achieve tasks.</p></li>
+<li><p>The second is to use a ‘Jupyter Notebook’ (files with the suffix <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>, a vestigial reference to when these were known as iPython notebooks). These are mixed-media files run in your browser. You can combine text and code, and they are useful for when you are actively tinkering with the data (e.g. plotting, statistics, analysis, etc.).</p></li>
+</ol>
+</section>
+<section id="text-editors-and-integrated-development-environments-ides">
+<h2><span class="section-number">3.2. </span>Text Editors and Integrated Development Environments (IDEs)<a class="headerlink" href="#text-editors-and-integrated-development-environments-ides" title="Link to this heading">#</a></h2>
+<p>Ultimately, a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file simply a text file of Python commands. You could write an entire software programme using only a plain-text editor such as Notepad (Windows) or TextEdit (MacOS) if you wish, and some masochists do.</p>
+<p>However, as your scripts get longer and more complex, it is nice to be able to write code in an environment that can help you with the small details - such as colour-coding code blocks to help you visualise structure (“syntax highlighting”); identifying errors in your code that will break your script; or by providing built-in functionality for running and debugging code.</p>
+<p>If you are very familiar with e.g. MATLAB or R (using RStudio), you will be familiar with an Integrated Development Environment (IDE). This editing environment provides you with a window for your code, but also other windows for other functions, such as keeping track of variables or viewing figure outputs.</p>
+<p>If you are very familiar with an IDE style of programming coming from MATLAB or R, then there are IDEs available for you - take a look into <a class="reference external" href="https://www.spyder-ide.org/">spyder</a> or <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a>. However,
+IDEs have never <em>quite</em> taken off in the same way for Python development. It’s partly because of the wide range of purposes Python is used for beyond data science (including e.g. web development), the range of non-Python elements Python programmers often use (such as CLI-based environment management, git, or metadata files), and because of the development of modern alternative ways of doing data science, such as Jupyter Notebooks (more on that below).</p>
+<p>Instead, my own preferred method is to use a <em>code editor</em>. Out of the box, these are effectively just fancy-looking text editors. However, by using extensions, they rapidly become very powerful tools, and can become the mainstay of how you interact with data files. I use my code editor for Python, MATLAB, metadata management, <code class="docutils literal notranslate"><span class="pre">ssh</span></code>-ing into HPCs, and even to write the document you are reading now!</p>
+<section id="the-best-editor-visual-studio-code">
+<h3><span class="section-number">3.2.1. </span>The ‘best’ editor – Visual Studio Code<a class="headerlink" href="#the-best-editor-visual-studio-code" title="Link to this heading">#</a></h3>
+<p>Out of all code editors, the most common is <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a>. As discussed above, it is effectively a fancy text editor, so there isn’t too much to say by way of a basic tutorial, but there is one <a class="reference external" href="https://code.visualstudio.com/docs/python/python-tutorial">here</a> if you like (note that it’s telling you to install Python, environments, and packages in ways other than <code class="docutils literal notranslate"><span class="pre">conda</span></code>/<code class="docutils literal notranslate"><span class="pre">mamba</span></code> - ignore these tips!).</p>
+<p>As mentioned, it is the packages that make VS Code truly powerful, but I wouldn’t worry about these. Most worth installing will be recommended to you as you open files. For instance, once you open the a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, the ‘Python’ add-on will be recommended. This will give you the recquisite tools for syntax highlighting, linting (automatically making sure your code is laid out appropriately), and environment management. Just take a look at the instructions for what you’re installing so that you know how to use it effectively.</p>
+<p>I have also installed additional packages such as <code class="docutils literal notranslate"><span class="pre">black</span></code> (my preferred linter), the ‘Remote - SSH’ tool for accessing HPCs, tools for better git management, tools for previewing and linting markdown, csv, and Makefiles, and even an add-on for using Jupyter Notebooks within VS Code. I didn’t do this all on day one though! Just know that if there’s something you want to do with code or programming, there’s probably some way that VS code can help.</p>
+</section>
+</section>
+<section id="jupyter-notebooks">
+<h2><span class="section-number">3.3. </span>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading">#</a></h2>
+<p>The modern ‘data sciencey’ way of interacting with Python is through something called <em>Jupyter Notebooks</em>. These are mixed-media documents of text and code that allow you to annotate and iterate code production. If you want an example of what one looks like, then look no further than the ‘Using Python’ document of this repository, which is itself a Jupyter Notebook!</p>
+<p>Jupyter Lab, the interface for your Notebook, can be installed via <code class="docutils literal notranslate"><span class="pre">conda</span></code>. It is recommended to do this in either your ‘<code class="docutils literal notranslate"><span class="pre">base</span></code>’ environment or a purpose built environment (e.g. <code class="docutils literal notranslate"><span class="pre">jupyter-env</span></code>). This is because you don’t want other packages creating conflicts with Jupyter.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>base
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+<p>We can still use our other installed <code class="docutils literal notranslate"><span class="pre">conda</span></code> environments within this Jupyter environment, but it isn’t automatic - it takes <a class="reference external" href="https://medium.com/&#64;patty.escalera/install-jupyter-lab-and-setup-a-conda-environment-54052443790b">a bit of jigging</a> using something called <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code>. This isn’t hard and is pretty self-explanatory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>geospatial
+<span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>ipykernel
+<span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>geospatial-kernel<span class="w"> </span>--display
+-name<span class="w"> </span><span class="s2">&quot;Python (geospatial environment)&quot;</span>
+</pre></div>
+</div>
+<p>Now, you can open Jupyter lab back in the other environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%conda<span class="w"> </span>activate<span class="w"> </span>base
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>This will open an instance of Jupyter Lab as a tab of your web browser. Note that, by default, the Lab environments defaults to opening within the directory you are currently in. You may wish to <code class="docutils literal notranslate"><span class="pre">cd</span></code> to a different directory (e.g. the directory of the project you are working on) to make things convenient.</p>
+<p>There will be an option on the home screen to create a new Notebook within the <strong>“Python (geospatial env)”</strong> environment. Alternatively, create a new Notebook and select the correct environment from the kernel dropdown menu in the top-right-hand corner of the notebook. Now, you will be able to access all of your <code class="docutils literal notranslate"><span class="pre">geospatial</span></code> environment packages from within Jupyter!</p>
+<p>When you have finished with Jupyter, make sure to save your files and close it - either within the file menu in-browser, or by returning to your terminal and ending the operaturation using <code class="docutils literal notranslate"><span class="pre">ctrl+c</span></code> (or <code class="docutils literal notranslate"><span class="pre">cmd+c</span></code> on Mac).</p>
+<p>I will let other tutorials take you in detail (e.g. <a class="reference external" href="https://jupyter.org/try-jupyter/notebooks/?path=notebooks/Intro.ipynb">1</a>, <a class="reference external" href="https://realpython.com/jupyter-notebook-introduction/">2</a>) now that you’re up and running - but now that we’ve set up Python and found ways to interact it, we can begin using it!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_install"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_installation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Installing Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../02_using/01_basic_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Basic Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">3.1. Command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-editors-and-integrated-development-environments-ides">3.2. Text Editors and Integrated Development Environments (IDEs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-editor-visual-studio-code">3.2.1. The ‘best’ editor – Visual Studio Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks">3.3. Jupyter Notebooks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Chudley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
