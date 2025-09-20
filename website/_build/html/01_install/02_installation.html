@@ -1,0 +1,714 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Installing Python &#8212; Geospatial Python at Durham</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_install/02_installation';</script>
+    <link rel="icon" href="../_static/dugg_favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Interfacing with Python" href="03_interfaces.html" />
+    <link rel="prev" title="1. Introducing the command line" href="01_command_line.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dugg_logo.png" class="logo__image only-light" alt="Geospatial Python at Durham - Home"/>
+    <script>document.write(`<img src="../_static/dugg_logo.png" class="logo__image only-dark" alt="Geospatial Python at Durham - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installing Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_command_line.html">1. Introducing the command line</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Installing Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_interfaces.html">3. Interfacing with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_using/01_basic_python.html">4. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_using/02_data_analysis.html">5. Python for Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_using/03_geospatial_analysis.html">6. Geospatial Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using Cryosphere Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_data/01_satellite.html">7. Satellite Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/02_ice_velocity.html">8. Ice Velocity Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/03_elevation.html">9. Elevation Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_data/04_altimetry.html">10. Altimetry Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/01_github.html">11. Version control: <code class="docutils literal notranslate"><span class="pre">git</span></code> and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/02_hpc.html">12. Using the HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/03_packages.html">13. Creating Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/04_performance.html">14. Improving Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_advanced/05_deep_learning.html">15. Deep Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/trchudley/geospatial-python-durham" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/trchudley/geospatial-python-durham/issues/new?title=Issue%20on%20page%20%2F01_install/02_installation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_install/02_installation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installing Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. Installing Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-options-and-why-they-might-not-be-the-best-idea">2.1.1. The ‘default’ options and why they might not be the best idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-installation">2.1.1.1. The default installation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-package-manager">2.1.1.2. The default package manager</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-environment-manager">2.1.1.3. The default environment manager</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-way-miniforge-and-conda">2.1.2. The ‘best’ way - Miniforge and <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">2.1.2.1. Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">2.2. Using <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-an-environment">2.2.1. Setting up an environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages">2.2.2. Installing packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducability-sharing-environments">2.2.3. Reproducability: sharing environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-additional-note-mamba">2.2.4. An additional note - <code class="docutils literal notranslate"><span class="pre">mamba</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="installing-python">
+<h1><span class="section-number">2. </span>Installing Python<a class="headerlink" href="#installing-python" title="Link to this heading">#</a></h1>
+<p>There are three components to understand when setting up Python:</p>
+<ol class="arabic simple">
+<li><p>Actually installing Python (e.g. having, say, Python 3.12 on your system, and when you run the <code class="docutils literal notranslate"><span class="pre">python</span></code> command in your terminal, it will open it the Python interpreter).</p></li>
+<li><p>Installing the many <strong>packages</strong> that make Python useful for scientific programming (e.g. <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">xarray</span></code> or <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>).</p></li>
+<li><p>Managing <strong>environments</strong> so you can have multiple versions of Python with different combinations of versions and packages.</p></li>
+</ol>
+<p>To conceptualise this, we can think of a fresh Python install like a new smartphone. Your phone will come with pre-installed apps such as phone, calendar, clock, notes, etc. In Python terms, our apps are known as <em>packages</em>, and those that come pre-installed are known as the <a class="reference external" href="https://docs.python.org/3/library/index.html">Standard Library</a>. Examples include <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">random</span></code>, and <code class="docutils literal notranslate"><span class="pre">math</span></code>. They are generally designed provide basic functionality for interacting with the OS, opening files and data, and providing basic mathermatical functionality.</p>
+<p>To make proper use of your phone, the vast majority of users will not be happy with the basic apps on a smartphone. We will want to customise it by installing specific apps that are tailored and useful to you (e.g. WhatsApp, Instagram, etc). On smartphones, we do this via an app store. In Python, our ‘app stores’ are known as <em>package managers</em>, and include options such as <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>. We use this to install custom packages that we can use for specialist purposes (e.g. for opening geospatial data, or using statistical techniques).</p>
+<p>There comes a point where you may have two contradictory uses for a phone that means you need more than one - think of people who have a personal phone and a work phone, for legal or security reasons. To make the analogy slightly more contrived, imagine for some reason that Instagram and Outlook cannot be installed on the same phone. As a result, you might want a ‘social media’ version of your phone for doomscrolling and a ‘work’ version of your phone for checking your emails. These are analogous to Python <em>environments</em>. For example, for one task you might need the latest bleeding-edge version of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> to take advantage of a recently added function. For another, you might be dependent on an old piece of code that requires a Python version &lt;3.10. It won’t be possible to do both! If you carry on adding more and more packages to one install, eventually it will break for reasons you don’t quite understand, but generally result from these conflicting <em>dependencies</em> (e.g. what versions of packages and software are required in the background) from different packages. As a result, you generally want to work want small installs (known as <em>environments</em>) with the minimal packages necessary for a project.</p>
+<!-- To make things even more complex, sometimes the packages (apps) we install are interdependent and mutually exclusive: a package we want for one task (e.g. satellite analysis) may, in the background critically [depend on](https://xkcd.com/2347/) a specific version of a numerical analysis package (e.g. `v.2.41`, as a useful function was introduced at that version). However, a package for another task (e.g. time-series analysis) may depend on another version. Our package managers are designed to *manage dependencies* and make sure that all the background required packages play nicely with all the packages you want. -->
+<section id="id1">
+<h2><span class="section-number">2.1. </span>Installing Python<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="the-default-options-and-why-they-might-not-be-the-best-idea">
+<h3><span class="section-number">2.1.1. </span>The ‘default’ options and why they might not be the best idea<a class="headerlink" href="#the-default-options-and-why-they-might-not-be-the-best-idea" title="Link to this heading">#</a></h3>
+<p>Python is an open-source project: although there is an <a class="reference external" href="https://www.python.org/">‘official’ Python website</a> and associated committees etc., anyone can (and indeed, is actively encouraged!) to build and extend on Python. Many groups and communities will put out improvements and extensions: this is great, at allows new ideas and methods to rapidly emerge and iterate. Communities can build solutions that are suited to their needs and share them with others. Some of them are so succesful they become the de-facto ‘standard’ way of doing things, even if it won’t appear on the official Python website!</p>
+<p>The downside of this is approach is that can lead to <a class="reference external" href="https://xkcd.com/927/">several overlapping ways of doing things</a> that can be confusing to beginners. When googling a way of doing something, you might find several solutions on forums and blogs. Sometimes the most-commonly used solution isn’t the most official solution (indeed, if you download install Python according to the instructions on the <a class="reference external" href="http://python.org">python.org</a> website, you will quickly start having a bad time when you begin trying to manage packages and environment). Sometimes you might find a great user-friendly guides only to find the proposed solution is outdated and broken. Sometimes the most common solution is actually inappropriate for your specific needs (e.g. in our case, geospatial approaches). Sometimes you can’t find any obvious solution at all, just endless StackExchange forums full of nerds arguing with each other over which of their pet solutions is best.</p>
+<p>The intention of this guide is to give you a clear guide as to the ‘best’ solution, so you can skip the confusing phase and get on with doing science. I won’t spend too much time, if any, on <em>why</em> any particular solution is best - although I have outlined why some of the alternatives aren’t ideal below - I will just point you towards the right materials to get on with the job. However, the reasoning will tend to be that these solutions are the most commonly used, robust, and well-suited for geospatial applications.</p>
+<!-- There are many ways to skin a cat, but in this guide I aim to save you time by recommending a single 'best' way that is useful for the largest range of scenarios, and particular for geospatial programming. -->
+<section id="the-default-installation">
+<h4><span class="section-number">2.1.1.1. </span>The default installation<a class="headerlink" href="#the-default-installation" title="Link to this heading">#</a></h4>
+<p>On some OSs (e.g. MacOS), you may have a built-in install of Python that will run when you enter the <code class="docutils literal notranslate"><span class="pre">python</span></code> command into the Terminal. It is generally best to <strong>avoid messing with these default installs of Python</strong>. They tend to be quite outdated, and more importantly your system may be dependent on this install for critical tasks - break it at your peril!</p>
+<p>You could try and use the official Python installer on <a class="reference internal" href="#python.org"><span class="xref myst">python.org</span></a>, or install from the command line using built-in OS software managers (<code class="docutils literal notranslate"><span class="pre">apt</span></code>, <code class="docutils literal notranslate"><span class="pre">brew</span></code>), but these options tend to make environment management challenging. There are also full-featured distributions of Python such as <a class="reference internal" href="#anaconda.com"><span class="xref myst">Anaconda</span></a> that come with a massive set of pre-installed packages, but these tend to be bloated and large, including a lot of things you don’t need. There are a lot of options out there, and if you don’t keep track of where things are coming from things can <a class="reference external" href="https://xkcd.com/1987/">quickly get confusing!</a>.</p>
+</section>
+<section id="the-default-package-manager">
+<h4><span class="section-number">2.1.1.2. </span>The default package manager<a class="headerlink" href="#the-default-package-manager" title="Link to this heading">#</a></h4>
+<p>Python comes with a lightweight way to manage packages and environments called <code class="docutils literal notranslate"><span class="pre">pip</span></code>. This is the default Python package management system, which connects to an online repository of public packages (think: app store) called the Python Package Index (<a class="reference external" href="https://pypi.org/">PyPI</a>). This is lightweight and built-in, but is limited to only distributing Python packages. As a result, installing more advanced compiled libraries that require non-Python software becomes an absolute pain. A particular problem for geospatial packages is that most modern geospatial software is built upon foundational programs such as <a class="reference external" href="https://gdal.org">GDAL</a>, the geospatial data abstraction library (most of e.g. QGIS is built on this!). This is ultimately a C++ library, so attempting to install most geospatial Python packages via <code class="docutils literal notranslate"><span class="pre">pip</span></code> will tend to fail without doing some very finicky fixes. It is desirable to find something better to let us not have to worry about this.</p>
+<p>As is common in the open source world, there are always <a class="reference external" href="https://xkcd.com/927/">trendy new package managers emerging</a> (<code class="docutils literal notranslate"><span class="pre">uv</span></code> appears to be the latest, and <code class="docutils literal notranslate"><span class="pre">poetry</span></code> also has proponents for managing environments), but I would recommend letting the computer scientists be the trendsetters here and stick with established and robust options.</p>
+</section>
+<section id="the-default-environment-manager">
+<h4><span class="section-number">2.1.1.3. </span>The default environment manager<a class="headerlink" href="#the-default-environment-manager" title="Link to this heading">#</a></h4>
+<p>Similarly, there is a default tool for managing virtual environments called <code class="docutils literal notranslate"><span class="pre">venv</span></code>. This again has slightly old and rudimentary methods and can’t keep track of non-Python dependencies.</p>
+</section>
+</section>
+<section id="the-best-way-miniforge-and-conda">
+<h3><span class="section-number">2.1.2. </span>The ‘best’ way - Miniforge and <code class="docutils literal notranslate"><span class="pre">conda</span></code><a class="headerlink" href="#the-best-way-miniforge-and-conda" title="Link to this heading">#</a></h3>
+<p>The best way to install Python and manage packages and environments is through the <code class="docutils literal notranslate"><span class="pre">conda</span></code> tool, installable via the “Miniforge” distribution.</p>
+<p>Miniforge is a lightweight, simple installation that works across Windows/MacOS/Linux. It is command-line-only (this is what the ‘mini’ in Miniforge means). As a result, there is no bloated GUI interface, and the installation process and interface will be the same wherever you use it - be it your laptop, a University desktop, or an HPC.</p>
+<p>Once installed, you will have access to <code class="docutils literal notranslate"><span class="pre">conda</span></code>, a command line tool for package management. It emerged from the <a class="reference internal" href="#anaconda.org"><span class="xref myst">Anaconda</span></a> data science company, but <code class="docutils literal notranslate"><span class="pre">conda</span></code> itself is free and open source. Unlike <code class="docutils literal notranslate"><span class="pre">pip</span></code>, it is adept at managing non-Python dependencies. This is great for less technical users that do not wish to spend hours trying to make sure their other tools and dependencies are playing nicely with Python. As a resulst, it has a large take-up in data science and applied sciences.</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span></code> allows you to download from a number of different repositories (think: app stores), but the most important one is the <a class="reference external" href="https://conda-forge.org/"><code class="docutils literal notranslate"><span class="pre">conda-forge</span></code></a>, a large community effort that is the de-facto location where scientists upload their tools and packages (think: apps) for you to use. By using the Miniforge install, you will be downloading from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> by default (this is what the ‘forge’ in Miniforge means), so you won’t have to worry about this again until you start developing your own tools and packages!</p>
+<section id="installation">
+<h4><span class="section-number">2.1.2.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h4>
+<p><a class="reference external" href="https://github.com/conda-forge/miniforge">For full information, see the instructions at the following link</a>. In short, you can download the installer using either <code class="docutils literal notranslate"><span class="pre">curl</span></code> or <code class="docutils literal notranslate"><span class="pre">wget</span></code>, preferably whilst in your home directory (whether you use <code class="docutils literal notranslate"><span class="pre">curl</span></code> or <code class="docutils literal notranslate"><span class="pre">wget</span></code> will depend on your OS and shell). For example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh&quot;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span><span class="s2">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh&quot;</span>
+</pre></div>
+</div>
+<p>You can then run the install script:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>Miniforge3-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh
+</pre></div>
+</div>
+<p>And follow the promps appropriately. You may be prompted to initialise conda via <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span></code>, and/or you can restart your terminal (lines that set up <code class="docutils literal notranslate"><span class="pre">conda</span></code> will be automatically added to your shell <code class="docutils literal notranslate"><span class="pre">rc</span></code> file, which will be created if you don’t already have one).</p>
+</section>
+</section>
+</section>
+<section id="using-conda">
+<h2><span class="section-number">2.2. </span>Using <code class="docutils literal notranslate"><span class="pre">conda</span></code><a class="headerlink" href="#using-conda" title="Link to this heading">#</a></h2>
+<section id="setting-up-an-environment">
+<h3><span class="section-number">2.2.1. </span>Setting up an environment<a class="headerlink" href="#setting-up-an-environment" title="Link to this heading">#</a></h3>
+<p>After you have installed Miniforge, you might notice that your command line interface looks slightly different:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>Note the new appearance of <code class="docutils literal notranslate"><span class="pre">(base)</span></code>. This indicates you are now in an <em>environment</em> - namely, one with the name “base”. This now means that when you use any software installed in this environment (in our case, python and any associated software), it will now be directing all commands to run a specific, isolated set of those programs. You can tell where these programs are by running the <code class="docutils literal notranslate"><span class="pre">which</span></code> command. For example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>which<span class="w"> </span>python
+/Users/tom/miniforge3/bin/python
+</pre></div>
+</div>
+<p>See - the <code class="docutils literal notranslate"><span class="pre">python</span></code> being used is in our base <code class="docutils literal notranslate"><span class="pre">miniforge</span></code> directory!</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span></code> always sets up a <code class="docutils literal notranslate"><span class="pre">base</span></code> environment by default. This is where <code class="docutils literal notranslate"><span class="pre">conda</span></code> itself is installed. However, you shouldn’t work in this environment - if you begin to install loads of packages here, you may find you break your <code class="docutils literal notranslate"><span class="pre">conda</span></code> installation entirely and have to reinstall everything from scratch!</p>
+<p>As a result, we should always create a new environmen to begin doing work in. Let’s create one called <code class="docutils literal notranslate"><span class="pre">geospatial</span></code>, as follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>geospatial<span class="w"> </span>python
+</pre></div>
+</div>
+<p>This means <em>“create a new environment that is called ‘geospatial’, and install python within it”</em></p>
+<p>After creating it, you can then activate the environment:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w">  </span>conda<span class="w"> </span>activate<span class="w"> </span>geospatial
+</pre></div>
+</div>
+<p>Iif we now look at our terminal, we can now see that <code class="docutils literal notranslate"><span class="pre">(geospatial)</span></code> at the beginning of the command line:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>By running <code class="docutils literal notranslate"><span class="pre">which</span></code>, we will also see that you point to a different Python install.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>which<span class="w"> </span>python
+/Users/tom/miniforge3/envs/geospatial/bin/python
+</pre></div>
+</div>
+<p>We can run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span> <span class="pre">--envs</span></code> to see what environments are avaiable, which will also highlight which one is active.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>info<span class="w"> </span>--envs
+
+<span class="c1"># conda environments:</span>
+<span class="c1">#</span>
+base<span class="w">                   </span>/Users/tom/miniforge3
+geospatial<span class="w">           </span>*<span class="w"> </span>/Users/tom/miniforge3/envs/geospatial
+</pre></div>
+</div>
+</section>
+<section id="installing-packages">
+<h3><span class="section-number">2.2.2. </span>Installing packages<a class="headerlink" href="#installing-packages" title="Link to this heading">#</a></h3>
+<p>Once the environment is active, you can begin to install packages. Make sure you are in the correct environment, and then you use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> to chain together as many desired packages as you like.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w">  </span>conda<span class="w"> </span>activate<span class="w"> </span>geospatial
+<span class="o">(</span>geospatial<span class="o">)</span><span class="w"> </span>tom<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>geopandas<span class="w"> </span>rioxarray<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+<p>Here,  I have included three packages: <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code>, and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. You can keep on adding names to install as many packages as you like. <code class="docutils literal notranslate"><span class="pre">conda</span></code> will do some thinking, and then you will be prompted to install all the packages with a <code class="docutils literal notranslate"><span class="pre">[y/n]</span></code> prompt.</p>
+<p>You might be surprised to see that many many packages - tens or possibly even hundreds - are going to be installed. As a package manager, <code class="docutils literal notranslate"><span class="pre">conda</span></code> automatically figures out what other dependencies need to be installed (e.g. <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> needs <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> requires <code class="docutils literal notranslate"><span class="pre">xarray</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span></code> will also figure out how to manage <em>conflicts</em>. It will always try and install the most recent and up-to-date version of anything it installs, but sometimes some packages requires specific versions. For instance, the latest version of package Z may be v3.6. Package X requires at least Z 3.0 (a fancy new command was introduced in this version). Package Y recquires at least Z v2.8, but <em>can’t</em> yet use anything beyond v3.4 (a reliable old command was deprecated in this version, and the package Y maintainers haven’t yet managed to fix things in the background). As a result, if you try and install packages X and Y in the same environment, <code class="docutils literal notranslate"><span class="pre">conda</span></code> will ensure that pacakge Y v3.4 will be installed. Every time you install a new package, <code class="docutils literal notranslate"><span class="pre">conda</span></code> is figuring out how to do this on a scale of hundreds of packages, making them all work together seamlessly without you noticing.</p>
+<p>Eventually, there will be a point where even <code class="docutils literal notranslate"><span class="pre">conda</span></code> can’t make magic work (e.g. package A requires package C <code class="docutils literal notranslate"><span class="pre">&gt;=6.2</span></code> and package B requires C <code class="docutils literal notranslate"><span class="pre">&lt;5.0</span></code>), and it might refuse to install a specific package in this case. This is why we manage multiple environments, and try and keep them as lightweight and project-specific as possible.</p>
+<p>You can also request specific version of software yourself, if so required. This is possible by specifying a version number (e.g. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python=3.9</span></code> or <code class="docutils literal notranslate"><span class="pre">python&lt;=3.10</span></code> or <code class="docutils literal notranslate"><span class="pre">python&gt;3.11</span></code>). From now on, <code class="docutils literal notranslate"><span class="pre">conda</span></code> will continue to manage the packages whilst keeping your preferred version. At any point, you can unpin this flag. You can also manually request to upgrade packages to their latest versions, uninstall packages, and pin and unpin versions. An authoritative tutorial <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">is located here</a>.</p>
+</section>
+<section id="reproducability-sharing-environments">
+<h3><span class="section-number">2.2.3. </span>Reproducability: sharing environments<a class="headerlink" href="#reproducability-sharing-environments" title="Link to this heading">#</a></h3>
+<p>In the interests of reproducing your science, you may wish to share with others your exact environments you used to run software, ensuring that all versions match and everything can be installed with a simple one-line command.</p>
+<p>This can be done creating, sharing, and installing from an environment file (<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>). This is a text-based markup file that has an example structure as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geospatial</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rioxarray</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geopandas</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+</pre></div>
+</div>
+<p>You can also specify specific versions if necessary (e.g. <code class="docutils literal notranslate"><span class="pre">python=3.12</span></code>). If you have an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file to hand, you can install the environment by running the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>If you would like to create an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> of your own to share with others, you can automatically create one at any point by ensuring you are in the correct environment you want to share, and running:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-f<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>This creates a new file called <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> in the current directory. One note though, is that it will be a very long, explicit list of packages, including all dependencies and with all version numbers explicitly stated. This is great for ensuring you share an exactly reproducable environment, but in a lot of cases you might prefer to offer flexibliity and allow updates. In this case, a smaller, manual <code class="docutils literal notranslate"><span class="pre">enviornment.yml</span></code> (like the one above, and which I have included within this repository) is probably preferable.</p>
+</section>
+<section id="an-additional-note-mamba">
+<h3><span class="section-number">2.2.4. </span>An additional note - <code class="docutils literal notranslate"><span class="pre">mamba</span></code><a class="headerlink" href="#an-additional-note-mamba" title="Link to this heading">#</a></h3>
+<p>(You can ignore this if you wish!)</p>
+<p>As mentioned above, once your environments get large (with dependencies, numbers of installed packages can reach the hundreds), then what was quite a simple operation to solve dependencies (“find package Z where <code class="docutils literal notranslate"><span class="pre">&lt;=3.9</span></code> to satisfy package X and <code class="docutils literal notranslate"><span class="pre">&gt;3.4</span></code> to satisfy Y)” can become a monster task with exponentially growing possiblities and conflicts to resolve. For quite a while, <code class="docutils literal notranslate"><span class="pre">conda</span></code> had relatively rudimentary solutions to resolve dependencies (initially a graph-based solution). However, as software needs grew, this began to be slow and innefficiant at resolving large environments.</p>
+<p>A project called <code class="docutils literal notranslate"><span class="pre">mamba</span></code> was created (continuing the snake theme), which ‘forked’ <code class="docutils literal notranslate"><span class="pre">conda</span></code> and replaced the default solver with a new, fast, C++-based solution called <code class="docutils literal notranslate"><span class="pre">libmamba</span></code>. Everything else was a drop-in replacement - e.g. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">numpy</span></code> simply became <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">numpy</span></code>. This was a massive difference - depency resolutions that took minutes or hours on <code class="docutils literal notranslate"><span class="pre">conda</span></code> suddenly took seconds. Naturally, in a classic open-source move, <code class="docutils literal notranslate"><span class="pre">mamba</span></code> was slowly becoming the default.</p>
+<p>However, as of late 2023, <code class="docutils literal notranslate"><span class="pre">conda</span></code> adopted <code class="docutils literal notranslate"><span class="pre">libmamba</span></code> back into its own code. Now, <code class="docutils literal notranslate"><span class="pre">conda</span></code> is nearly as fast as <code class="docutils literal notranslate"><span class="pre">mamba</span></code>! You may still see in my code and notes that I continue to use <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. I slightly prefer the log notes, error messages, and find it slightly faster for some scenarios. If you find you are struggling with <code class="docutils literal notranslate"><span class="pre">conda</span></code>, try the same command but with <code class="docutils literal notranslate"><span class="pre">mamba</span></code> instead (after installing Miniconda, both will be available to you). However, nowadays, it (hopefully) won’t make much of a difference to all but powerusers.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_install"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_command_line.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introducing the command line</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_interfaces.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Interfacing with Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. Installing Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-options-and-why-they-might-not-be-the-best-idea">2.1.1. The ‘default’ options and why they might not be the best idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-installation">2.1.1.1. The default installation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-package-manager">2.1.1.2. The default package manager</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-environment-manager">2.1.1.3. The default environment manager</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-way-miniforge-and-conda">2.1.2. The ‘best’ way - Miniforge and <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">2.1.2.1. Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">2.2. Using <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-an-environment">2.2.1. Setting up an environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages">2.2.2. Installing packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducability-sharing-environments">2.2.3. Reproducability: sharing environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-additional-note-mamba">2.2.4. An additional note - <code class="docutils literal notranslate"><span class="pre">mamba</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Chudley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

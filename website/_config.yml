@@ -1,10 +1,10 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Geospatial Programming at Durham
+title: Geospatial Python at Durham
 author: Tom Chudley
 copyright: "2025"
-# logo: logo.png
+logo: images/dugg_logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -23,11 +23,14 @@ latex:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/trchudley/geospatial-python-durham  # Online location of your book
-#   path_to_book: docs  # Optional path to your book, relative to the repository root
-  # branch: master  # Which branch of the repository should be used when creating links (optional)
+  path_to_book: website  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: images/dugg_favicon.png
   use_issues_button: true
   use_repository_button: true
+  home_page_in_navbar: false
+  # use_multitoc_numbering: false

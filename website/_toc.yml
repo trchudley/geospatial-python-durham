@@ -2,11 +2,32 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: 0-main-readme
-chapters:
- - file: 1-introducing-command-line
- - file: 2-installing-python
- - file: 3-interacting-with-python
- - file: 4-using-python
- - file: 5-using-github
- - file: 6-using-hpc
+root: index
+parts:
+ - caption: Installing Python
+   numbered: True
+   chapters:
+    - file: 01_install/01_command_line
+    - file: 01_install/02_installation
+    - file: 01_install/03_interfaces
+ - caption: Using Python
+   numbered: True
+   chapters:
+    - file: 02_using/01_basic_python
+    - file: 02_using/02_data_analysis
+    - file: 02_using/03_geospatial_analysis
+ - caption: Using Cryosphere Data
+   numbered: True
+   chapters:
+    - file: 03_data/01_satellite
+    - file: 03_data/02_ice_velocity
+    - file: 03_data/03_elevation
+    - file: 03_data/04_altimetry
+ - caption: Advanced Topics
+   numbered: True
+   chapters:
+    - file: 04_advanced/01_github
+    - file: 04_advanced/02_hpc
+    - file: 04_advanced/03_packages
+    - file: 04_advanced/04_performance
+    - file: 04_advanced/05_deep_learning
